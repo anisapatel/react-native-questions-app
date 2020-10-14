@@ -8,19 +8,16 @@ import {
 } from "react-native";
 import ListAnswers from "./ListAnswers";
 
-const QuestionCard = ({ question, answers, userResponses }) => {
+const QuestionCard = ({ question, answers, userResponses, handleSubmit }) => {
   const [response, setUserResponse] = useState([]);
+
   const addResponse = (text) => {
     console.log(text, "<--text");
     setUserResponse((prevResponse) => {
       return [{ text }, ...prevResponse];
     });
-    console.log(response, "<--response");
   };
-  const handleSubmit = () => {
-    //navigate to single page with the user response
-    console.log(response, "<--userResponse");
-  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Question: {question}</Text>
@@ -31,7 +28,10 @@ const QuestionCard = ({ question, answers, userResponses }) => {
           <ListAnswers item={item} addResponse={addResponse} />
         )}
       />
-      <TouchableOpacity style={styles.button} onPress={() => handleSubmit}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => handleSubmit(response)}
+      >
         <Text style={styles.buttonText}>Submit Answers</Text>
       </TouchableOpacity>
     </View>

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { questionData } from "../data/index";
 import QuestionCard from "../components/QuestionCard";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const [questions, setQuestions] = useState(questionData);
   const [answers, setUserAnswers] = useState([]);
   const [number, setNumber] = useState(0);
@@ -17,12 +17,18 @@ const Home = () => {
   //     setNumber(0);
   //   };
 
+  const handleSubmit = (responses) => {
+    console.log(responses, "<--responses");
+    navigation.navigate("Response", { userData: responses });
+  };
+
   return (
     <View style={styles.container}>
       <QuestionCard
         question={questions[0].question}
         answers={questions[0].answers}
         questionNum={number + 1}
+        handleSubmit={handleSubmit}
       />
     </View>
   );
