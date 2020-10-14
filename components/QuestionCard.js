@@ -8,10 +8,12 @@ import {
 } from "react-native";
 import ListAnswers from "./ListAnswers";
 
-const QuestionCard = ({ question, answers, userResponses, handleSubmit }) => {
+const QuestionCard = ({ question, answers, handleSubmit }) => {
   const [response, setUserResponse] = useState([]);
 
   const addResponse = (text) => {
+    //get response object of rank and answer
+    //order array using rank to display in the next page
     setUserResponse((prevResponse) => {
       return [{ text }, ...prevResponse];
     });
@@ -24,7 +26,7 @@ const QuestionCard = ({ question, answers, userResponses, handleSubmit }) => {
         style={{ flex: 1 }}
         data={answers}
         renderItem={({ item }) => (
-          <ListAnswers item={item} addResponse={addResponse} />
+          <ListAnswers answer={item} addResponse={addResponse} />
         )}
       />
       <TouchableOpacity
@@ -40,12 +42,6 @@ const QuestionCard = ({ question, answers, userResponses, handleSubmit }) => {
 export default QuestionCard;
 
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
-    // backgroundColor: "#ffffff",
-  },
   text: {
     fontSize: 20,
     padding: 20,

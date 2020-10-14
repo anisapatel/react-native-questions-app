@@ -8,27 +8,28 @@ import {
   TextInput,
 } from "react-native";
 
-const ListAnswers = ({ item, addResponse }) => {
+const ListAnswers = ({ answer, addResponse }) => {
   const [rank, setRank] = useState(null);
-  const [option, setOption] = useState("");
   const [response, setResponse] = useState({});
 
-  const handleChange = (text) => {
-    setRank(text);
+  const handleChange = (rank) => {
+    console.log(text, "<--text");
+    //update rank and text on button
+    //{"text": "c#", "rank", 1 }
+    //set response and pass that into function instead
+    setRank(rank);
   };
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => addResponse(item)}>
-        <Text style={styles.text}>{item}</Text>
+      <TouchableOpacity onPress={() => addResponse(answer)}>
+        <Text style={styles.text}>{answer}</Text>
       </TouchableOpacity>
-      <View style={styles.rankContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Rank number"
-          keyboardType="numeric"
-          onChangeText={handleChange}
-        />
-      </View>
+      <TextInput
+        style={styles.input}
+        placeholder="Rank number"
+        keyboardType="numeric"
+        onChangeText={handleChange}
+      />
     </View>
   );
 };
@@ -46,13 +47,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
   },
-  rankContainer: {
+  input: {
     justifyContent: "flex-end",
     alignSelf: "flex-end",
+    fontSize: 20,
   },
-  //   input: {
-  //     height: 50,
-  //     padding: 8,
-  //     fontSize: 16,
-  //   },
 });

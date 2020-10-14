@@ -2,12 +2,19 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { questionData } from "../data/index";
 import QuestionCard from "../components/QuestionCard";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Home = ({ navigation }) => {
   const [questions, setQuestions] = useState(questionData);
-  const [answers, setUserAnswers] = useState([]);
-  const [number, setNumber] = useState(0);
+  const [number, setQuestionNumber] = useState(0);
 
+  /*answer Object structure = {
+      question: "",
+      answers: ["", ""],
+      userAnswers: [{"answer", "rank"}, {"answer", "rank"}],
+      questionId: 
+  }
+*/
   //   useEffect(() => {
   //     fetchQuestions();
   //   }, []);
@@ -16,6 +23,10 @@ const Home = ({ navigation }) => {
   //     setQuestions(questionData);
   //     setNumber(0);
   //   };
+
+  // const nextQuestion = () => {
+  //  setQuestionNumber(number + 1)
+  //   }
 
   const handleSubmit = (responses) => {
     console.log(responses, "<--responses");
@@ -30,6 +41,9 @@ const Home = ({ navigation }) => {
         questionNum={number + 1}
         handleSubmit={handleSubmit}
       />
+      {/* <TouchableOpacity  onClick={nextQuestion}>
+          <Text>Next Question</Text>
+          </TouchableOpacity> */}
     </View>
   );
 };
