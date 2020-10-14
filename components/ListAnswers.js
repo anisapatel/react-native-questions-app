@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,9 +7,9 @@ import {
   FlatList,
 } from "react-native";
 
-const ListAnswers = ({ item }) => {
+const ListAnswers = ({ item, addResponse }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => addResponse(item)}>
       <View style={styles.container}>
         <Text style={styles.text}>{item}</Text>
       </View>
