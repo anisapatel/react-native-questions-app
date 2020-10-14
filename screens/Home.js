@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import questionData from "../data/index";
+import { questionData } from "../data/index";
+import QuestionCard from "../components/QuestionCard";
 
 const Home = () => {
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState(questionData);
   const [answers, setUserAnswers] = useState([]);
+  const [number, setNumber] = useState(0);
 
-  useEffect(() => {
-    fetchQuestions();
-  }, []);
+  //   useEffect(() => {
+  //     fetchQuestions();
+  //   }, []);
 
-  const fetchQuestions = () => {
-    setQuestions(questionData);
-    console.log(questionData, "<--data");
-  };
+  //   const fetchQuestions = () => {
+  //     setQuestions(questionData);
+  //     setNumber(0);
+  //   };
 
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <QuestionCard
+        question={questions[0].question}
+        answers={questions[0].answers}
+        questionNum={number + 1}
+      />
     </View>
   );
 };
