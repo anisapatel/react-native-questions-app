@@ -1,6 +1,7 @@
 export const questionData = [
   {
-    question: "Which of these programming languages do you prefer?",
+    question:
+      "Which of these programming languages do you prefer? Please rank your top three answers.",
     answers: [
       "Ruby",
       "JavaScript",

@@ -12,7 +12,6 @@ const QuestionCard = ({ question, answers, userResponses, handleSubmit }) => {
   const [response, setUserResponse] = useState([]);
 
   const addResponse = (text) => {
-    console.log(text, "<--text");
     setUserResponse((prevResponse) => {
       return [{ text }, ...prevResponse];
     });

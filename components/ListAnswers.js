@@ -5,15 +5,31 @@ import {
   View,
   TouchableOpacity,
   FlatList,
+  TextInput,
 } from "react-native";
 
 const ListAnswers = ({ item, addResponse }) => {
+  const [rank, setRank] = useState(null);
+  const [option, setOption] = useState("");
+  const [response, setResponse] = useState({});
+
+  const handleChange = (text) => {
+    setRank(text);
+  };
   return (
-    <TouchableOpacity onPress={() => addResponse(item)}>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <TouchableOpacity onPress={() => addResponse(item)}>
         <Text style={styles.text}>{item}</Text>
+      </TouchableOpacity>
+      <View style={styles.rankContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Rank number"
+          keyboardType="numeric"
+          onChangeText={handleChange}
+        />
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 
@@ -30,4 +46,13 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
   },
+  rankContainer: {
+    justifyContent: "flex-end",
+    alignSelf: "flex-end",
+  },
+  //   input: {
+  //     height: 50,
+  //     padding: 8,
+  //     fontSize: 16,
+  //   },
 });
